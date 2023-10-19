@@ -78,8 +78,8 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                     <div class="row">
                         <div class="col-xl-6">
                             <div class="form-group ">
-                                <label for="I_TenGiay">Tên giày</label>
-                                <input required value="<?php if (isset($I_TenGiay))  echo $I_TenGiay ?>" required type="text" name="I_TenGiay" class="form-control" id="I_TenGiay" placeholder="Nhập tên giày">
+                                <label for="I_TenGiay">Tên sản phẩm</label>
+                                <input required value="<?php if (isset($I_TenGiay))  echo $I_TenGiay ?>" required type="text" name="I_TenGiay" class="form-control" id="I_TenGiay" placeholder="Nhập tên sản phẩm">
                             </div>
 
                             <div class="form-group ">
@@ -119,7 +119,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                            
                             <div class="form-group ">
 
-                                <label for="I_MaLG">Loại giày</label>
+                                <label for="I_MaLG">Loại sản phẩm</label>
                                 <select name="I_MaLG" class="form-select" id="I_MaLG">
 
                                     <?php while ($row = mysqli_fetch_array($query_run_products_type)) { ?>
@@ -194,7 +194,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                     <tr>
                         <th>#</th>
                         <th>Mã</th>
-                        <th>Tên giày</th>
+                        <th>Tên sản phẩm</th>
                         <th>Giá bán </th>
                         <th>Ảnh</th>
                         <th>Số lượng</th>
@@ -310,8 +310,8 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                                                             <div class="col-xl-6">
                                                                 <input type="hidden" name="MaGiay" id="MaGiay" value="<?php echo $row['MaGiay']; ?>">
                                                                 <div class="form-group ">
-                                                                    <label for="TenGiay">Tên giày</label>
-                                                                    <input required value="<?php echo $row['TenGiay']; ?>" required type="text" name="TenGiay" class="form-control" id="TenGiay" placeholder="Nhập tên giày">
+                                                                    <label for="TenGiay">Tên sản phẩm</label>
+                                                                    <input required value="<?php echo $row['TenGiay']; ?>" required type="text" name="TenGiay" class="form-control" id="TenGiay" placeholder="Nhập tên sản phẩm">
                                                                 </div>
 
                                                                 <div class="form-group ">
@@ -353,7 +353,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
 
                                                                 </div>
                                                                 <div class="form-group ">
-                                                                    <label for="MaLG">Loại giày</label>
+                                                                    <label for="MaLG">Loại sản phẩm</label>
                                                                     <select name="MaLG" class="form-select" id="MaLG">
                                                                         <?php for ($i = 0; $i < count($arr); $i++) {  ?>
                                                                             <option <?php if ($row["MaLG"] == $arr[$i]) echo "selected='selected' ";  ?> value="<?php echo $arr[$i]; ?>"><?php echo $arr1[$i]; ?></option>

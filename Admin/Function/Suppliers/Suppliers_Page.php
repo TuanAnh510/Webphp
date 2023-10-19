@@ -199,7 +199,7 @@ $query_run = mysqli_query($conn, $query);
 
                                                         <div class="form-group">
 
-                                                            <label>Xoá nhà cung cấp <span class="text-danger font-weight-bold"> <?php echo $row['TenNCC']; ?></span> sẽ xoá các sản phẩm có loại giày này ?</label>
+                                                            <label>Xoá nhà cung cấp <span class="text-danger font-weight-bold"> <?php echo $row['TenNCC']; ?></span> sẽ xoá các sản phẩm có loại sản phẩm này ?</label>
 
                                                         </div>
 

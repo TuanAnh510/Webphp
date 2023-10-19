@@ -143,7 +143,7 @@ if (isset($_POST['dathangne'])) {
                     <h3>Ảnh</h3>
                   </div>
                   <div class="col-lg-3">
-                    <h3>Tên giày</h3>
+                    <h3>Tên sản phẩm</h3>
                   </div>
                   <div class="col-lg-1">
                     <h3>Size giày</h3>

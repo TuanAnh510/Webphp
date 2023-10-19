@@ -93,7 +93,7 @@ $query_run = mysqli_query($con, $query);
 
                                                                 <th>Size giày</th>
                                                                 <th>Màu giày</th>
-                                                                <th>Tên giày</th>
+                                                                <th>Tên sản phẩm</th>
                                                                 <th>Số lượng</th>
                                                                 <th>Đơn giá</th>
                                                                 <th>Tổng tiền</th>

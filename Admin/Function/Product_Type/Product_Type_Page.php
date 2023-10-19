@@ -23,8 +23,8 @@ $query_run = mysqli_query($conn, $query);
             <div class="modal-body">
                 <form action="" method="post">
                     <div class="form-group">
-                        <label for="Them_TenLoaiGiay">Tên loại giày</label>
-                        <input required value="" required type="text" name="Them_TenLoaiGiay" class="form-control" id="Them_TenLoaiGiay" placeholder="Nhập tên loại giày">
+                        <label for="Them_TenLoaiGiay">Tên loại sản phẩm</label>
+                        <input required value="" required type="text" name="Them_TenLoaiGiay" class="form-control" id="Them_TenLoaiGiay" placeholder="Nhập tên loại sản phẩm">
 
                     </div>
 
@@ -97,8 +97,8 @@ $query_run = mysqli_query($conn, $query);
                                                 <div class="modal-body">
                                                     <form method="post">
                                                         <div class="form-group">
-                                                            <p><span class="font-weight-bold">Mã loại giày: </span> <?php echo $row['MaLG']; ?></p>
-                                                            <p><span class="font-weight-bold">Tên loại giày: </span>  <?php echo $row['TenLoaiGiay']; ?></p>
+                                                            <p><span class="font-weight-bold">Mã loại sản phẩm: </span> <?php echo $row['MaLG']; ?></p>
+                                                            <p><span class="font-weight-bold">Tên loại sản phẩm: </span>  <?php echo $row['TenLoaiGiay']; ?></p>
 
                                                         </div>
 
@@ -136,7 +136,7 @@ $query_run = mysqli_query($conn, $query);
 
                                                         <div class="form-group">
                                                             <label> Tên thương hiệu </label>
-                                                            <input required value="<?php echo $row['TenLoaiGiay']; ?>" type="text" name="Sua_TenLoaiGiay" id="Sua_TenLoaiGiay" class="form-control" placeholder="Nhập tên loại giày">
+                                                            <input required value="<?php echo $row['TenLoaiGiay']; ?>" type="text" name="Sua_TenLoaiGiay" id="Sua_TenLoaiGiay" class="form-control" placeholder="Nhập tên loại sản phẩm">
                                                         </div>
 
 
@@ -174,7 +174,7 @@ $query_run = mysqli_query($conn, $query);
 
                                                         <div class="form-group">
 
-                                                            <label>Xoá loại giày <span class="text-danger font-weight-bold"> <?php echo $row['TenLoaiGiay']; ?></span> sẽ xoá các sản phẩm có loại giày này ?</label>
+                                                            <label>Xoá loại sản phẩm <span class="text-danger font-weight-bold"> <?php echo $row['TenLoaiGiay']; ?></span> sẽ xoá các sản phẩm có loại sản phẩm này ?</label>
 
                                                         </div>
 

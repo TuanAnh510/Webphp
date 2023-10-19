@@ -90,9 +90,9 @@ $query_run = mysqli_query($con, $query);
                                                         <table class="table table-bordered table-secondary table-hover display text-center">
                                                             <thead class="thead-dark">
                                                                 <th>#</th>
-                                                                <th>Size giày</th>
-                                                                <th>Màu giày</th>
-                                                                <th>Tên giày</th>
+                                                                <!-- <th>Size giày</th>
+                                                                <th>Màu giày</th> -->
+                                                                <th>Tên sản phẩm</th>
                                                                 <th>Số lượng</th>
                                                                 <th>Đơn giá</th>
                                                                 <th>Tổng tiền</th>

@@ -82,8 +82,8 @@ $query_nvgh = mysqli_query($conn, "Select * from nhanviengiaohang");
                                                         <thead class="thead-dark">
                                                             <th>#</th>
                                                             <th>Số đơn hàng</th>
-                                                            <th>Mã giày</th>
-                                                            <th>Tên giày</th>
+                                                            <th>Mã sp</th>
+                                                            <th>Tên sản phẩm</th>
                                                             <th>Size</th>
                                                             <th>Màu</th>
                                                             <th>Số lượng</th>
