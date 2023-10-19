@@ -8,9 +8,9 @@
       <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
         <div class="d-flex justify-content-center py-4">
-          <a href="#" class="logo d-flex align-items-center w-auto">
-            <img src="assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">Trang Quản Trị</span>
+          <a href="#">
+            <img src="assets/img/logopk.png" alt="" style="width: 200px;">
+            <!-- <span class="d-none d-lg-block">Trang Quản Trị</span> -->
           </a>
         </div><!-- End Logo -->
 
@@ -20,7 +20,7 @@
          
 
             <div class="pt-4 pb-2">
-              <h5 class="card-title text-center pb-0 fs-4"> Đăng nhập</h5>
+              <h5 class="card-title text-center pb-0 fs-4"> Đăng nhập Admin</h5>
               <p class="text-center small">Nhập tên người dùng và mật khẩu của bạn để đăng nhập</p>
             </div>
 
