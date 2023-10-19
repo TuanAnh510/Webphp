@@ -242,22 +242,7 @@ $query_run = mysqli_query($conn, $query);
                                     </div>
 
                                     <!-- END-DELETE  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 </td>
-
-
                             </tr>
 
                     <?php  }

@@ -45,7 +45,12 @@ $query_run = mysqli_query($conn, $query);
                         <label for="Them_DienThoai">Điện thoại</label>
                         <input required value="<?php if (isset($Them_DienThoai))  echo $Them_DienThoai ?>" required type="text" name="Them_DienThoai" class="form-control" id="Them_DienThoai" placeholder="Nhập điện thoại">
                     </div>
-                   
+
+                    <div class="form-group ">
+                        <label for="Them_TrangThai">Trạng thái</label>
+                        <input required value="<?php if (isset($Them_TrangThai))  echo $Them_TrangThai ?>" required type="text" name="Them_TrangThai" class="form-control" id="Them_TrangThai" placeholder="Nhập trạng thái">
+                    </div>
+
 
             </div>
             <div class="modal-footer">
@@ -90,7 +95,7 @@ $query_run = mysqli_query($conn, $query);
                         <th>Tên</th>
                         <th>Mật Khẩu</th>
                         <th>Email</th>
-                        <th>Khóa tài khoản</th>
+                        <th>Trạng thái</th>
                         <th>Chức năng</th>
 
 
@@ -106,9 +111,17 @@ $query_run = mysqli_query($conn, $query);
                                 <td> <?php echo $row['MaKH']; ?></td>
                                 <td> <?php echo $row['HoTen']; ?> </td>
                                 <td> <?php echo $row['MatKhau']; ?> </td>
-                                <td> <?php echo $row['Email']; ?> </td>                   
-                              
-                                
+                                <td> <?php echo $row['Email']; ?> </td>
+                                <td class="<?php echo ($row['trangthai'] == 1) ? 'active-status' : 'blocked-status'; ?>">
+                                    <?php
+                                    if ($row['trangthai'] == 1) {
+                                        echo "Active";
+                                    } else {
+                                        echo "Blocked";
+                                    }
+                                    ?>
+                                </td>
+
 
 
                                 <td>
@@ -131,17 +144,21 @@ $query_run = mysqli_query($conn, $query);
 
                                                                 <div class="card card-body ">
                                                                     <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-                                                                      
+
 
                                                                         <div class="media-body">
                                                                             <h6 class="media-title font-weight-semibold">
 
                                                                                 <p class="text-primary"><?php echo $row['HoTen']; ?></p>
                                                                             </h6>
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Email: </span> <?php if($row["Email"] != null) echo $row['Email']; else echo "Chưa cập nhật"; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Mật khẩu: </span> <?php if($row["MatKhau"] != null) echo $row['MatKhau']; else echo "Chưa cập nhật"; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Điện thoại khách hàng: </span> <?php if($row["DienThoaiKH"] != null) echo $row['DienThoaiKH']; else echo "Chưa cập nhật"; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Ngày sinh: </span> <?php if($row["NgaySinh"] != null) echo $row['NgaySinh']; else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Email: </span> <?php if ($row["Email"] != null) echo $row['Email'];
+                                                                                                                                            else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Mật khẩu: </span> <?php if ($row["MatKhau"] != null) echo $row['MatKhau'];
+                                                                                                                                                else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Điện thoại khách hàng: </span> <?php if ($row["DienThoaiKH"] != null) echo $row['DienThoaiKH'];
+                                                                                                                                                            else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Ngày sinh: </span> <?php if ($row["NgaySinh"] != null) echo $row['NgaySinh'];
+                                                                                                                                                else echo "Chưa cập nhật"; ?></p>
 
 
 
@@ -193,11 +210,11 @@ $query_run = mysqli_query($conn, $query);
                                                     <form action="" method="post">
 
                                                         <input type="hidden" name="Xoa_MaKH" id="Xoa_MaKH" value="<?php echo $row['MaKH']; ?>">
-                                                  
-                                                 
-                                                   
-                                                     
-                                                      
+
+
+
+
+
 
                                                         <div class="form-group">
                                                             <label>Bạn có chắc muốn xoá khách hàng <span class="text-danger font-weight-bold"> <?php echo $row['HoTen']; ?></span> không?</label>
@@ -227,7 +244,7 @@ $query_run = mysqli_query($conn, $query);
 
 
                                 </td>
-                             
+
 
                             </tr>
 
@@ -271,9 +288,9 @@ $query_run = mysqli_query($conn, $query);
 </script>
 
 <style>
-.preview1 img{
-    width: 50%;
-}
+    .preview1 img {
+        width: 50%;
+    }
 </style>
 
 <script>
@@ -282,17 +299,17 @@ $query_run = mysqli_query($conn, $query);
     });
 </script>
 <script>
-const inputImg1 = document.querySelector('#input-img1')
+    const inputImg1 = document.querySelector('#input-img1')
 
-inputImg1.addEventListener('change', (e) => {
-    let file = e.target.files[0]
-    console.log(file)
-    if (!file) return
+    inputImg1.addEventListener('change', (e) => {
+        let file = e.target.files[0]
+        console.log(file)
+        if (!file) return
 
-    let img = document.createElement('img')
-    img.src = URL.createObjectURL(file)
+        let img = document.createElement('img')
+        img.src = URL.createObjectURL(file)
 
-    document.querySelector('.preview1').appendChild(img)
-})
+        document.querySelector('.preview1').appendChild(img)
+    })
 </script>
 <!-- <img src="../Images/ImgProducts/Image202211051378.jpg" alt="" srcset=""> -->
