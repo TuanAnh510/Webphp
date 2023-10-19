@@ -5,7 +5,7 @@ include("./Function/Product_Type/Handle.php");
 ?>
 
 <?php
-$query = "SELECT * FROM LoaiGiay";
+$query = "SELECT * FROM danhmucsp";
 $query_run = mysqli_query($conn, $query);
 ?>
 

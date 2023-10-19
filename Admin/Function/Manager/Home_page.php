@@ -14,58 +14,60 @@ include("Header.php");
 
   <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
-      <a class="nav-link " href="?thamso=thanhvien">
-        <i class="bi bi-grid"></i>
-        <span>Thành viên</span>
-      </a>
-    </li><!-- End Dashboard Nav -->
+    
 
     
 
     
     <li class="nav-heading">Quản lí</li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="?thamso=sanpham">
-        <i class="bi bi-gem"></i>
-        <span>Sản phẩm</span>
+    <li class="nav-item" >
+      <a class="nav-link collapsed" href="?thamso=sanpham" style="color: black">
+    
+        <span >Sản phẩm</span>
       </a>
     </li><!-- End F.A.Q Page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="?thamso=thuonghieu">
-        <i class="bi bi-card-list"></i>
+      <a class="nav-link collapsed" href="?thamso=thuonghieu" style="color: black">
+       
         <span>Thương hiệu</span>
       </a>
     </li><!-- End Profile Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="?thamso=loaigiay">
-        <i class="bi bi-layout-text-window-reverse"></i>
-        <span>Loại giày</span>
+      <a class="nav-link collapsed" href="?thamso=danhmucsp" style="color: black">
+        
+        <span>Danh mục sản phẩm</span>
       </a>
     </li><!-- End Contact Page Nav -->
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="?thamso=nhacungcap">
-        <i class="bi bi-card-list"></i>
+      <a class="nav-link collapsed" href="?thamso=nhacungcap" style="color: black">
+    
         <span>Nhà cung cấp</span>
+      </a>
+    </li><!-- End Register Page Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="?thamso=khachhang" style="color: black">
+    
+        <span>Khách hàng</span>
       </a>
     </li><!-- End Register Page Nav -->
 
     <?php if($_SESSION["QuanLi"] == true) { ?>
       <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-person-lines-fill"></i><span>Nhân viên</span><i class="bi bi-chevron-down ms-auto"></i>
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" style="color: black">
+        <span>Nhân viên</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="?thamso=quantrivien">
-            <i class="bi bi-circle"></i><span>Nhân viên quản trị</span>
+          <a href="?thamso=quantrivien" style="color: black">
+            <span>Nhân viên quản trị</span>
           </a>
         </li>
         <li>
-          <a href="?thamso=nhanviengiaohang">
-            <i class="bi bi-circle"></i><span>Nhân viên giao hàng</span>
+          <a href="?thamso=nhanviengiaohang" style="color: black">
+           <span>Nhân viên giao hàng</span>
           </a>
         </li>
 
@@ -76,30 +78,30 @@ include("Header.php");
 
 
     <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-bar-chart"></i><span>Đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i>
+      <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#" style="color: black">
+      </i><span>Đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href="?thamso=hangchoxacnhan">
-            <i class="bi bi-circle"></i><span>Chờ xác nhận</span>
+           </i><span>Chờ xác nhận</span>
           </a>
         </li>
         <li>
           <a href="?thamso=hangdangxuli">
-            <i class="bi bi-circle"></i><span>Đã xác nhận</span>
+            </i><span>Đã xác nhận</span>
           </a>
         </li>
         <li>
           <a href="?thamso=giaohangthanhcong">
-            <i class="bi bi-circle"></i><span>Đã giao</span>
+          </i><span>Đã giao</span>
           </a>
         </li>
       </ul>
     </li><!-- End Charts Nav -->
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="?thamso=thongke">
-        <i class="bi bi-graph-up-arrow"></i>
+    <li class="nav-item" >
+      <a class="nav-link collapsed" href="?thamso=thongke" style="color: black">
+       
         <span>Thống kê</span>
       </a>
     </li><!-- End F.A.Q Page Nav -->

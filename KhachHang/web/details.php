@@ -49,7 +49,7 @@
   include("Layout_KhachHang_Header.php");
   $MaGiay = $_GET['MaGiay'];
 
-  $query = "SELECT `MaGiay`,`TenGiay`, `GiaBan`, `AnhBia`,TenLoaiGiay, MoTa, GiaBanCu,Màu,Size FROM `giay`,loaigiay where loaigiay.MaLG= giay.MaLG and  MaGiay = '$MaGiay' and HienThiSanPham=1 ";
+  $query = "SELECT `MaGiay`,`TenGiay`, `GiaBan`, `AnhBia`,TenLoaiGiay, MoTa, GiaBanCu,Màu,Size FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  MaGiay = '$MaGiay' and HienThiSanPham=1 ";
 
   $result = mysqli_query($con, $query);
 

@@ -107,8 +107,7 @@ $query_run = mysqli_query($con, $query);
                                                                             <td> <?php echo $index1;
                                                                                     $index1++; ?></td>
 
-                                                                            <td><?php echo $r["Sizegiay"] ?></td>
-                                                                            <td><?php echo $r["Maugiay"] ?></td>
+                                                                            
                                                                             <td><?php echo $r["TenGiay"] ?></td>
                                                                             <td><?php echo $r["SoLuong"] ?></td>
                                                                             <td><?php echo number_format($r["DonGia"], 0, ',', '.'); ?></td>

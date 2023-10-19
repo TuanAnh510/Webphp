@@ -23,14 +23,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $MaKH =  $_SESSION["MaKH"];
-$query = "select * from giohang join giay on giohang.MaGiay = giay.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
+$query = "select * from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
 $result = mysqli_query($con, $query);
-$tongtien_query = "select sum(giay.GiaBan * giohang.soluong) as total from giohang join giay on giohang.MaGiay = giay.MaGiay where giohang.MaKH = '$MaKH'";
+$tongtien_query = "select sum(giay.GiaBan * giohang.soluong) as total from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay where giohang.MaKH = '$MaKH'";
 $run_tongtien = mysqli_query($con, $tongtien_query);
 $row_tongtien = mysqli_fetch_assoc($run_tongtien);
 $tinh = $row_tongtien['total'];
 
-$query2 = "select count(*) as count from giohang join giay on giohang.MaGiay = giay.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
+$query2 = "select count(*) as count from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
 $result1 = mysqli_query($con, $query2);
 $row1 = mysqli_fetch_assoc($result1);
 $count = $row1['count'];
@@ -48,7 +48,7 @@ if (isset($_POST['dathangne'])) {
   $run_laymaddh = mysqli_fetch_array($result_laymaddh);
   $donhangid = $run_laymaddh["SoDH"];
 
-  $truyvangiohang = "select * from giohang join giay on giohang.MaGiay = giay.MaGiay where MaKH = '$MaKH'";
+  $truyvangiohang = "select * from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay where MaKH = '$MaKH'";
   $run_truyvangiohang = mysqli_query($con, $truyvangiohang);
 
   if (mysqli_num_rows($run_truyvangiohang) != 0) {

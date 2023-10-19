@@ -2,15 +2,6 @@
     if(!isset($_GET['thamso'])){$thamso="";}else{$thamso=$_GET['thamso'];}
     switch($thamso)
 	{
-		case "baitap":
-            include("./Function/ThucHanh/ExerciseLink/Exercise_1.php");    
-		break;
-		case "baitapp2":
-            include("./Function/ThucHanh/ExerciseLink/Exercise_2.php");    
-		break;
-		case "baitapp3":
-            include("./Function/ThucHanh/ExerciseLink/Exercise_3.php");    
-		break;
 		case "thongtincanhan":
             include("./Function/Profile/Profile_Page.php");     
 		break;
@@ -20,9 +11,12 @@
 		case "sanpham":
             include("./Function/Products/Products_Page.php");     
 		break;
-		case "loaigiay":
+		case "danhmucsp":
             include("./Function/Product_Type/Product_Type_Page.php");     
 		break;
+		case "khachhang";
+			include("./Function/Customer/Customer_Page.php");
+        break;
 		case "quantrivien":
             include("./Function/Staffs/Staff_Page.php");     
 		break;
@@ -44,8 +38,6 @@
 		case "thongke":
             include("./Function/Statistical/Statistical_Page.php");     
 		break;
-		default:
-			include("./Function/Manager/Members.php");  
 		
 	}
 ?>

@@ -17,7 +17,7 @@ if(isset($_POST['deletedata']))
 {
     $id = $_POST['D_MaTH'];
    
-    $query = "DELETE FROM Giay WHERE MaTH='$id'";
+    $query = "DELETE FROM sanpham WHERE MaTH='$id'";
     $query1=  "DELETE FROM ThuongHieu WHERE MaTH='$id'";
     $query_run = mysqli_query($conn, $query);
     $query_run1 = mysqli_query($conn, $query1);

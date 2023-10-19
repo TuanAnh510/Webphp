@@ -8,7 +8,7 @@ include("./Function/Products/Handle.php");
 
 
 <?php
-$query = "SELECT * FROM Giay join LoaiGiay on Giay.MaLG = LoaiGiay.MaLG join ThuongHieu on Giay.MaTH = ThuongHieu.MaTH";
+$query = "SELECT * FROM sanpham join danhmucsp on sanpham.MaLG = danhmucsp.MaLG join ThuongHieu on sanpham.MaTH = ThuongHieu.MaTH";
 $query_run = mysqli_query($conn, $query);
 
 $query_brands = "SELECT * FROM ThuongHieu";
@@ -18,7 +18,7 @@ $query_run_brands2 = mysqli_query($conn, $query_brands);
 
 
 
-$query_products_type = "SELECT * FROM LoaiGiay";
+$query_products_type = "SELECT * FROM danhmucsp";
 $query_run_products_type = mysqli_query($conn, $query_products_type);
 $query_run_products_type1 = mysqli_query($conn, $query_products_type);
 $query_run_products_type2 = mysqli_query($conn, $query_products_type);
@@ -116,20 +116,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                             </div>
                         </div>
                         <div class="col-xl-6">
-                            <div class="form-group ">
-
-                                <label for="I_Size">Size giày</label>
-                                <input required value="<?php if (isset($I_Size))  echo $I_Size ?>" required type="text" name="I_Size" class="form-control" id="I_Size" placeholder="Size giày">
-                             
-
-                            </div>
-                            <div class="form-group ">
-
-                                <label for="I_Màu">Màu sắc</label>
-                                <input required value="<?php if (isset($I_Màu))  echo $I_Màu ?>" required type="text" name="I_Màu" class="form-control" id="I_Màu" placeholder="Màu sắc">
-                               
-
-                            </div>
+                           
                             <div class="form-group ">
 
                                 <label for="I_MaLG">Loại giày</label>
@@ -266,8 +253,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                                                                             </ul>
 
                                                                             <p class="mb-3"><?php echo $row['MoTa']; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold">Màu sắc: </span> <?php echo $row['Màu']; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold">Size giày: </span> <?php echo $row['Size']; ?></p>
+                                                                            
 
 
                                                                             <p class="mb-3"><span class="font-weight-bold"> Hiển thị ở trang khách hàng: </span><?php if ($row['HienThiSanPham'] == 1) echo "Có";
@@ -359,20 +345,7 @@ while ($row = mysqli_fetch_array($query_run_suppliers2)) {
                                                                     <small class="text-danger"><?php if (isset($loi2))  echo $loi2 ?></small>
 
                                                                 </div>
-                                                                <div class="form-group ">
-
-                                                                    <label for="Size">Size giày</label>
-                                                                    <input required value="<?php echo $row['Size']; ?>" required type="text" name="Size" class="form-control" id="Size" placeholder="Size giày">
-                                                              
-
-                                                                </div>
-                                                                <div class="form-group ">
-
-                                                                    <label for="Màu">Màu sắc</label>
-                                                                    <input required value="<?php echo $row['Màu']; ?>" required type="text" name="Màu" class="form-control" id="Màu" placeholder="Số lượng">
- 
-
-                                                                </div>
+                                                               
                                                                 <div class="form-group ">
                                                                     <label for="GiaBanCu">Giá Bán Cũ</label>
                                                                     <input class="form-control" type="text" name="GiaBanCu" value="<?php echo $row["GiaBanCu"] ?>">

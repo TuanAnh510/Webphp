@@ -73,7 +73,7 @@ $query_run = mysqli_query($conn, $query);
 
                                                 <div class="modal-body">
 
-                                                    <?php $query_run_chitiet = mysqli_query($conn, "select * from chitietdathang JOIN dondathang ON chitietdathang.SoDH = dondathang.SoDH join giay ON chitietdathang.MaGiay = giay.MaGiay where chitietdathang.SoDH = '$row[SoDH]'"); ?>
+                                                    <?php $query_run_chitiet = mysqli_query($conn, "select * from chitietdathang JOIN dondathang ON chitietdathang.SoDH = dondathang.SoDH join sanpham ON chitietdathang.MaGiay = sanpham.MaGiay where chitietdathang.SoDH = '$row[SoDH]'"); ?>
                                                     <table class="table table-bordered table-secondary table-hover display text-center">
                                                         <thead class="thead-dark">
                                                             <th>#</th>
@@ -98,8 +98,6 @@ $query_run = mysqli_query($conn, $query);
                                                                         <td><?php echo $r["SoDH"] ?></td>
                                                                         <td><?php echo $r["MaGiay"] ?></td>
                                                                         <td><?php echo $r["TenGiay"] ?></td>
-                                                                        <td><?php echo $r["Sizegiay"] ?></td>
-                                                                        <td><?php echo $r["Maugiay"] ?></td>
                                                                         <td><?php echo $r["SoLuong"] ?></td>
                                                                         <td><?php echo number_format($r["DonGia"], 0, ',', '.'); ?></td>
                                                                         <td><?php echo number_format($r["SoLuong"] * $r["DonGia"], 0, ',', '.'); ?></td>

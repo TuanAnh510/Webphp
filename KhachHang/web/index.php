@@ -5,12 +5,12 @@
 
     if (isset($_GET['Ten']) && !empty($_GET['Ten'])) {
         $t = $_GET['Ten'];
-        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,loaigiay where loaigiay.MaLG= giay.MaLG and  GiaBan > 1000000 and HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' )";
+        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  GiaBan > 1000000 and HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' )";
         $result = mysqli_query($con, $query);
         $row = mysqli_num_rows($result);
         echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
     } else {
-        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,loaigiay where loaigiay.MaLG= giay.MaLG and  GiaBan > 1000000  and HienThiSanPham=1";
+        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  GiaBan > 1000000  and HienThiSanPham=1";
         $result = mysqli_query($con, $query);
     }
 

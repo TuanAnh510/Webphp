@@ -154,7 +154,7 @@ if (isset($_POST['insertdata'])) {
 <?php
 if (isset($_POST['hidedata'])) {
   $id = $_POST['S_MaGiay'];
-  $query = "UPDATE Giay SET HienThiSanPham=0  WHERE MaGiay='$id'  ";
+  $query = "UPDATE sanpham SET HienThiSanPham=0  WHERE MaGiay='$id'  ";
   $query_run = mysqli_query($conn, $query);
   if ($query_run) {
     Edit();
@@ -170,7 +170,7 @@ if (isset($_POST['hidedata'])) {
 
 if (isset($_POST['showdata'])) {
   $id = $_POST['SS_MaGiay'];
-  $query = "UPDATE Giay SET HienThiSanPham=1  WHERE MaGiay='$id'  ";
+  $query = "UPDATE sanpham SET HienThiSanPham=1  WHERE MaGiay='$id'  ";
   $query_run = mysqli_query($conn, $query);
   if ($query_run) {
     Edit();

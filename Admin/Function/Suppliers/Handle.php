@@ -20,7 +20,7 @@ if(isset($_POST['xoadulieu']))
 {
     $id = $_POST['Xoa_MaNCC'];
    
-    $query = "DELETE FROM Giay WHERE MaNCC='$id'";
+    $query = "DELETE FROM sanpham WHERE MaNCC='$id'";
     $query1=  "DELETE FROM nhacungcap WHERE MaNCC='$id'";
     $query_run = mysqli_query($conn, $query);
     $query_run1 = mysqli_query($conn, $query1);

@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ql_bangiay";
+$dbname = "webphukien";
 $con = mysqli_connect($servername, $username, $password, $dbname);
 
 mysqli_set_charset($con,'utf8');

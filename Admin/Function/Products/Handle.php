@@ -5,8 +5,6 @@ if (isset($_POST['updatedata'])) {
   $id = $_POST['MaGiay'];
   $TenGiay = $_POST['TenGiay'];
   $GiaBan = $_POST['GiaBan'];
-  $Size = $_POST['Size'];
-  $Màu = $_POST['Màu'];
   $MoTa = $_POST['MoTa'];
   // $NgayCapNhat = $_POST['NgayCapNhat'];
   $SoLuongTon = $_POST['SoLuongTon'];
@@ -39,7 +37,7 @@ if (isset($_POST['updatedata'])) {
     } else {
       if (move_uploaded_file($filename, $path)) {
         if (is_numeric($SoLuongTon) and is_numeric($GiaBan) and is_numeric($GiaBanCu) ) {
-          $query = "UPDATE Giay SET TenGiay='$TenGiay',GiaBan =$GiaBan,MoTa ='$MoTa',AnhBia ='$newname',NgayCapNhat = now(),SoLuongTon =$SoLuongTon,MaLG =$MaLG,MaTH =$MaTH ,MaNCC =$MaNCC ,GiaBanCu =$GiaBanCu,Size = '$Size',Màu = '$Màu'   WHERE MaGiay='$id'  ";
+          $query = "UPDATE sanpham SET TenGiay='$TenGiay',GiaBan =$GiaBan,MoTa ='$MoTa',AnhBia ='$newname',NgayCapNhat = now(),SoLuongTon =$SoLuongTon,MaLG =$MaLG,MaTH =$MaTH ,MaNCC =$MaNCC ,GiaBanCu =$GiaBanCu   WHERE MaGiay='$id'  ";
           mysqli_query($conn, $query);
           Edit();
           unlink($path1);
@@ -66,7 +64,7 @@ if (isset($_POST['updatedata'])) {
     }
   } else {
     if (is_numeric($SoLuongTon) and is_numeric($GiaBan) and is_numeric($GiaBanCu)) {
-    $query = "UPDATE Giay SET TenGiay='$TenGiay',GiaBan =$GiaBan,MoTa ='$MoTa',NgayCapNhat = now(),SoLuongTon =$SoLuongTon,MaLG =$MaLG,MaTH =$MaTH ,MaNCC =$MaNCC  ,GiaBanCu =$GiaBanCu,Size = '$Size',Màu = '$Màu'    WHERE MaGiay='$id'  ";
+    $query = "UPDATE sanpham SET TenGiay='$TenGiay',GiaBan =$GiaBan,MoTa ='$MoTa',NgayCapNhat = now(),SoLuongTon =$SoLuongTon,MaLG =$MaLG,MaTH =$MaTH ,MaNCC =$MaNCC  ,GiaBanCu =$GiaBanCu  WHERE MaGiay='$id'  ";
     mysqli_query($conn, $query);
     Edit();}
     else {
@@ -96,7 +94,7 @@ if (isset($_POST['deletedata'])) {
   $id = $_POST['D_MaGiay'];
   $AnhBiaCu = $_POST['D_AnhBiaCu'];
   $path1 = "../Images/ImgProducts/". $AnhBiaCu;
-  $query = "DELETE FROM Giay WHERE MaGiay='$id'";
+  $query = "DELETE FROM sanpham WHERE MaGiay='$id'";
   $query_run_1 = mysqli_query($conn,"DELETE FROM chitietdathang WHERE MaGiay='$id'");
   $query_run = mysqli_query($conn, $query);
   
@@ -117,9 +115,6 @@ if (isset($_POST['deletedata'])) {
 if (isset($_POST['insertdata'])) {
   $I_TenGiay = $_POST['I_TenGiay'];
   $I_GiaBan = $_POST['I_GiaBan'];
-  $I_Size = $_POST['I_Size'];
-  $I_Màu = $_POST['I_Màu'];
-
   $I_MoTa = $_POST['I_MoTa'];
   // $I_NgayCapNhat = $_POST['I_NgayCapNhat'];
   $I_SoLuongTon = $_POST['I_SoLuongTon'];
@@ -146,7 +141,7 @@ if (isset($_POST['insertdata'])) {
     if (move_uploaded_file($filename, $path)) {
       try {
           $query1 = "
-          INSERT INTO Giay
+          INSERT INTO sanpham
           VALUES (
           NULL ,
           '$I_TenGiay',
@@ -159,9 +154,8 @@ if (isset($_POST['insertdata'])) {
           '$I_MaTH',
           '$I_MaNCC',
           1,
-          null,
-          '$I_Size',
-          '$I_Màu'
+          null
+          
           );";
           mysqli_query($conn, $query1);
           Add();
@@ -198,7 +192,7 @@ if (isset($_POST['insertdata'])) {
 <?php
 if (isset($_POST['hidedata'])) {
   $id = $_POST['S_MaGiay'];
-  $query = "UPDATE Giay SET HienThiSanPham=0  WHERE MaGiay='$id'  ";
+  $query = "UPDATE sanpham SET HienThiSanPham=0  WHERE MaGiay='$id'  ";
   $query_run = mysqli_query($conn, $query);
   if ($query_run) {
     Edit();
@@ -214,7 +208,7 @@ if (isset($_POST['hidedata'])) {
 
 if (isset($_POST['showdata'])) {
   $id = $_POST['SS_MaGiay'];
-  $query = "UPDATE Giay SET HienThiSanPham=1  WHERE MaGiay='$id'  ";
+  $query = "UPDATE sanpham SET HienThiSanPham=1  WHERE MaGiay='$id'  ";
   $query_run = mysqli_query($conn, $query);
   if ($query_run) {
     Edit();

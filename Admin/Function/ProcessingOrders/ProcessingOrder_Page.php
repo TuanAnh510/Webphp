@@ -102,8 +102,7 @@ $query_nvgh = mysqli_query($conn, "Select * from nhanviengiaohang");
                                                                         <td><?php echo $r["SoDH"] ?></td>
                                                                         <td><?php echo $r["MaGiay"] ?></td>
                                                                         <td><?php echo $r["TenGiay"] ?></td>
-                                                                        <td><?php echo $r["Sizegiay"] ?></td>
-                                                                        <td><?php echo $r["Maugiay"] ?></td>
+                                                                       
                                                                         <td><?php echo $r["SoLuong"] ?></td>
                                                                         <td><?php echo number_format($r["DonGia"], 0, ',', '.'); ?></td>
                                                                         <td><?php echo number_format($r["SoLuong"] * $r["DonGia"], 0, ',', '.'); ?></td>

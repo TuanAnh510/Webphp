@@ -714,12 +714,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
+  color: black;
   background: #fff;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-  color: #899bbd;
+  color: black;
 }
 
 .sidebar-nav .nav-link:hover {
@@ -1249,7 +1249,7 @@ h6 {
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: bla;
 }
 
 .footer .credits {

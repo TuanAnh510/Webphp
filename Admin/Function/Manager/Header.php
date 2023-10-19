@@ -13,7 +13,7 @@ $ketqua = mysqli_fetch_array($donhangmoi);
   <div class="d-flex align-items-center justify-content-between">
     <a href="?thamso=sanpham" class="logo d-flex align-items-center">
       <img src="assets/img/logo.png" alt="">
-      <span class="d-none d-lg-block">TASHOP</span>
+      <span class="d-none d-lg-block">Trang Quản Trị</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>

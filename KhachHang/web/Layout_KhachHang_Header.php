@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-  <title>TASHOP</title>
+  <title>Trang Quản Trị</title>
 
   <link href="css/style.css" rel='stylesheet' type='text/css' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -104,7 +104,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
   include("connection.php");
 
-  $query1 = "SELECT * FROM loaigiay";
+  $query1 = "SELECT * FROM danhmucsp";
   $result1 = mysqli_query($con, $query1);
   ?>
 
