@@ -160,20 +160,11 @@ $query_run = mysqli_query($conn, $query);
                                                                             <p class="mb-3"><span class="font-weight-bold"> Ngày sinh: </span> <?php if ($row["NgaySinh"] != null) echo $row['NgaySinh'];
                                                                                                                                                 else echo "Chưa cập nhật"; ?></p>
 
-
-
-
-
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
-
-
-
-
 
                                                         </div>
                                                     </div>
@@ -231,8 +222,11 @@ $query_run = mysqli_query($conn, $query);
 
                                     <!-- END-DELETE  -->
 
-
-
+                                    <!-- BLOCK  -->
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="">
+                                        Khóa tài khoản
+                                    </button>
+                                    
 
 
 

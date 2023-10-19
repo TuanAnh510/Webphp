@@ -242,6 +242,11 @@ $query_run = mysqli_query($conn, $query);
                                     </div>
 
                                     <!-- END-DELETE  -->
+
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="">
+                                        Khóa tài khoản
+                                    </button>
+
                                 </td>
                             </tr>
 
