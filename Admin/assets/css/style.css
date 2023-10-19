@@ -65,7 +65,21 @@ h6 {
   font-weight: 600;
   color: #012970;
 }
+.active-status {
+  background-color: #FFF; /* Màu xanh */
+  color: #4CAF50; /* Màu chữ trắng */
+  font-weight: bold; /* Chữ đậm */
+  padding: 5px 10px; /* Kích thước và khoảng cách nội dung */
+  border-radius: 5px; /* Bo góc */
+}
 
+.blocked-status {
+  background-color: #FFF; /* Màu xanh */
+  color: #e74c3c; /* Màu chữ trắng */
+  font-weight: bold; /* Chữ đậm */
+  padding: 5px 10px; /* Kích thước và khoảng cách nội dung */
+  border-radius: 5px; /* Bo góc */
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/

@@ -45,6 +45,10 @@ $query_run = mysqli_query($conn, $query);
                         <label for="Them_DienThoai">Điện thoại</label>
                         <input required value="<?php if (isset($Them_DienThoai))  echo $Them_DienThoai ?>" required type="text" name="Them_DienThoai" class="form-control" id="Them_DienThoai" placeholder="Nhập điện thoại">
                     </div>
+                    <div class="form-group ">
+                        <label for="Them_TrangThai">Trạng thái</label>
+                        <input required value="<?php if (isset($Them_TrangThai))  echo $Them_TrangThai ?>" required type="text" name="Them_TrangThai" class="form-control" id="Them_TrangThai" placeholder="Trạng thái">
+                    </div>
                     <!-- <div class="form-group ">
                         <label for="Them_ChucVu">Chức vụ</label>
                         <select class="form-control" name="Them_ChucVu" id="">
@@ -98,6 +102,7 @@ $query_run = mysqli_query($conn, $query);
                         <th>Ảnh </th>
                         <th>Tên</th>
                         <th>Điện thoại</th>
+                        <th>Trạng thái</th>
                         <th>Chức năng</th>
 
                     </tr>
@@ -110,10 +115,21 @@ $query_run = mysqli_query($conn, $query);
                                         $index++; ?></td>
                                 <td> <?php echo $row['MaQTV']; ?></td>
                                 <td> <?php echo $row['TaiKhoan']; ?> </td>
-                                <td> <?php if($row['QuanLi']) echo "Quản lí"; else echo "Nhân viên" ; ?> </td>
+                                <td> <?php if ($row['QuanLi']) echo "Quản lí";
+                                        else echo "Nhân viên"; ?> </td>
                                 <td style="width:50px"><img style="width:100%" src="../Images/ImgAdmins/<?php echo $row['AnhDaiDien'] ?>" alt=""></td>
                                 <td> <?php echo $row['HoTen']; ?> </td>
                                 <td> <?php echo $row['DienThoaiNV']; ?> </td>
+                                <td class="<?php echo ($row['trangthai'] == 1) ? 'active-status' : 'blocked-status'; ?>">
+                                    <?php
+                                    if ($row['trangthai'] == 1) {
+                                        echo "Active";
+                                    } else {
+                                        echo "Blocked";
+                                    }
+                                    ?>
+                                </td>
+
                                 <td>
                                     <!-- DETAIL  -->
                                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Modal_Detail<?php echo $row['MaQTV']; ?>">
@@ -148,13 +164,16 @@ $query_run = mysqli_query($conn, $query);
                                                                             </h6>
 
                                                                             <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                                                                                <li class="list-inline-item text-muted"><?php if ($row['QuanLi'] == 1) echo "Quản lí"; else echo "Nhân viên"?></li>
-                                                                                <li class="list-inline-item text-muted"><?php  $row['DienThoaiNV']; ?></li>
+                                                                                <li class="list-inline-item text-muted"><?php if ($row['QuanLi'] == 1) echo "Quản lí";
+                                                                                                                        else echo "Nhân viên" ?></li>
+                                                                                <li class="list-inline-item text-muted"><?php $row['DienThoaiNV']; ?></li>
 
                                                                             </ul>
 
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Địa chỉ: </span> <?php if($row["DiaChi"] != null) echo $row['DiaChi']; else echo "Chưa cập nhật"; ?></p>
-                                                                            <p class="mb-3"><span class="font-weight-bold"> Email: </span> <?php if($row["Email"] != null) echo $row['Email']; else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Địa chỉ: </span> <?php if ($row["DiaChi"] != null) echo $row['DiaChi'];
+                                                                                                                                                else echo "Chưa cập nhật"; ?></p>
+                                                                            <p class="mb-3"><span class="font-weight-bold"> Email: </span> <?php if ($row["Email"] != null) echo $row['Email'];
+                                                                                                                                            else echo "Chưa cập nhật"; ?></p>
 
 
 
@@ -203,11 +222,11 @@ $query_run = mysqli_query($conn, $query);
                                                     <form action="" method="post">
 
                                                         <input type="hidden" name="Xoa_MaQTV" id="Xoa_MaQTV" value="<?php echo $row['MaQTV']; ?>">
-                                                  
+
                                                         <input type="hidden" name="Xoa_AnhDaiDienCu" id="" value="<?php echo $row["AnhDaiDien"] ?>">
-                                                   
+
                                                         <input type="hidden" name="Xoa_QuanLi" id="" value="<?php echo $row["QuanLi"] ?>">
-                                                      
+
 
                                                         <div class="form-group">
                                                             <label>Bạn có chắc muốn xoá nhân viên <span class="text-danger font-weight-bold"> <?php echo $row['HoTen']; ?></span> không?</label>
@@ -237,7 +256,7 @@ $query_run = mysqli_query($conn, $query);
 
 
                                 </td>
-                             
+
 
                             </tr>
 
@@ -281,9 +300,9 @@ $query_run = mysqli_query($conn, $query);
 </script>
 
 <style>
-.preview1 img{
-    width: 50%;
-}
+    .preview1 img {
+        width: 50%;
+    }
 </style>
 
 <script>
@@ -292,17 +311,17 @@ $query_run = mysqli_query($conn, $query);
     });
 </script>
 <script>
-const inputImg1 = document.querySelector('#input-img1')
+    const inputImg1 = document.querySelector('#input-img1')
 
-inputImg1.addEventListener('change', (e) => {
-    let file = e.target.files[0]
-    console.log(file)
-    if (!file) return
+    inputImg1.addEventListener('change', (e) => {
+        let file = e.target.files[0]
+        console.log(file)
+        if (!file) return
 
-    let img = document.createElement('img')
-    img.src = URL.createObjectURL(file)
+        let img = document.createElement('img')
+        img.src = URL.createObjectURL(file)
 
-    document.querySelector('.preview1').appendChild(img)
-})
+        document.querySelector('.preview1').appendChild(img)
+    })
 </script>
 <!-- <img src="../Images/ImgProducts/Image202211051378.jpg" alt="" srcset=""> -->
