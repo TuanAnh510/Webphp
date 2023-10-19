@@ -53,11 +53,12 @@ if (isset($_SESSION['email'])) {
 						<h3>THÔNG TIN ĐĂNG NHẬP</h3>
 						<div>
 							<span>mật khẩu<label>*</label></span>
-							<input type="password" name="password" required="true" pattern=".{6,}"> <!-- password > 6 ký tự -->
+							<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
+							<!-- password > 8 gồm ký tự đặc biệt, chữ hoa, chữ thường -->
 						</div>
 						<div>
 							<span>xác nhận mật khẩu<label>*</label></span>
-							<input type="password" name="ConfirmPassword" required="true" pattern=".{6,}"> <!-- password > 6 ký tự -->
+							<input type="password" name="ConfirmPassword" required="true" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"> <!-- password > 6 ký tự -->
 						</div>
 						<div class="clear"> </div>
 					</div>

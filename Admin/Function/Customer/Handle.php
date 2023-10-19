@@ -5,26 +5,36 @@
 <?php
 if (isset($_POST['deleteKH'])) {
   $id = $_POST['Xoa_MaKH'];
-  if ($Xoa_QuanLi == false) {
-    $path1 = "../Images/ImgAdmins/" . $AnhDaiDienCu;
-    $query = "DELETE FROM quantrivien WHERE MaQTV='$id'";
-    $query_run = mysqli_query($conn, $query);
-    if ($query_run) {
-      if ($AnhDaiDienCu != 'user.png') {
-        unlink($path1);
-      }
-      Delete();
-    } else {
-      echo '<script> alert("Chưa xoá"); </script>';
-    }
+  $query = "DELETE FROM khachhang WHERE MaKH='$id'";
+  $query_run = mysqli_query($conn, $query);
+  if ($query_run) {
+
+    Delete();
   } else {
-    echo '<script> alert("Không thể xoá nhân viên quản lí"); </script>';
+    echo '<script> alert("Chưa xoá"); </script>';
   }
 }
 
 
 ?>
 
+<?php
+
+if (isset($_POST['unlockdatakh'])) {
+  $id = $_POST['Unlock_MaKH'];
+  $trangthai = $_POST['Unlock_TrangThai'];
+
+  if ($trangthai == 1) {
+    $trangthai = 0;
+  } else {
+    $trangthai = 1;
+  }
+  $query = "UPDATE khachhang set trangthai = $trangthai  WHERE MaKH='$id'";
+  $query_run = mysqli_query($conn, $query);
+}
+
+
+?>
 
 <?php
 

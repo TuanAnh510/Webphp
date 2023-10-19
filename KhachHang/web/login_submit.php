@@ -1,6 +1,7 @@
 <?php
 require 'connection.php';
 session_start();
+$trangthai = 0;
 $email = mysqli_real_escape_string($con, $_POST['email']);
 $regex_email = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[_a-z0-9-]+)*(\.[a-z]{2,3})$/";
 if (!preg_match($regex_email, $email)) {
@@ -19,7 +20,21 @@ if (strlen($password) < 6) {
 $user_authentication_query = "select * from khachhang where Email='$email' and MatKhau='$password'";
 $user_authentication_result = mysqli_query($con, $user_authentication_query) or die(mysqli_error($con));
 $rows_fetched = mysqli_num_rows($user_authentication_result);
-if ($rows_fetched == 0) {
+
+if ($result = $con->query($user_authentication_query)) {
+    while ($row = $result->fetch_assoc()) {
+        $trangthai = $row["trangthai"];
+    }
+    $result->free();
+}
+if ($trangthai == 0) {
+?>
+    <script>
+        window.alert("Tài khoản của bạn đã bị khóa! Liên hệ với quản trị viên để được giúp đỡ!");
+    </script>
+    <meta http-equiv="refresh" content="1;url=login.php" />
+<?php
+} else if ($rows_fetched == 0) {
     //no user
     //redirecting to same login page
 ?>

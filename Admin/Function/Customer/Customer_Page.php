@@ -1,7 +1,7 @@
 <?php
 include("./Function/Manager/Check_login.php");
 include("./Function/Sup/Success.php");
-include("./Function/Staffs/Handle.php");
+include("./Function/Customer/Handle.php");
 ?>
 
 <?php
@@ -112,6 +112,7 @@ $query_run = mysqli_query($conn, $query);
                                 <td> <?php echo $row['HoTen']; ?> </td>
                                 <td> <?php echo $row['MatKhau']; ?> </td>
                                 <td> <?php echo $row['Email']; ?> </td>
+
                                 <td class="<?php echo ($row['trangthai'] == 1) ? 'active-status' : 'blocked-status'; ?>">
                                     <?php
                                     if ($row['trangthai'] == 1) {
@@ -121,8 +122,6 @@ $query_run = mysqli_query($conn, $query);
                                     }
                                     ?>
                                 </td>
-
-
 
                                 <td>
                                     <!-- DETAIL  -->
@@ -203,9 +202,7 @@ $query_run = mysqli_query($conn, $query);
                                                         <input type="hidden" name="Xoa_MaKH" id="Xoa_MaKH" value="<?php echo $row['MaKH']; ?>">
 
 
-
-
-
+                                                        <input type="hidden" name="Xoa_AnhKH" id="" value="<?php echo $row["AnhKH"] ?>">
 
                                                         <div class="form-group">
                                                             <label>Bạn có chắc muốn xoá khách hàng <span class="text-danger font-weight-bold"> <?php echo $row['HoTen']; ?></span> không?</label>
@@ -223,19 +220,58 @@ $query_run = mysqli_query($conn, $query);
                                     <!-- END-DELETE  -->
 
                                     <!-- BLOCK  -->
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="">
-                                        Khóa tài khoản
+                                    <div class="modal fade" id="ModalUnlock<?php echo $row['MaKH']; ?>" tabindex="-1" aria-labelledby="Label_Edit" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg ">
+                                            <!-- modal-xl -->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="Label_Edit"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="" method="post">
+
+                                                        <input type="hidden" name="Unlock_MaKH" id="Unlock_MaKH" value="<?php echo $row['MaKH']; ?>">
+
+                                                        <input type="hidden" name="Unlock_TrangThai" id="Unlock_TrangThai" value="<?php echo $row["trangthai"] ?>">
+
+                                                        <div class="form-group">
+                                                            <label>Bạn có chắc muốn
+                                                                <?php
+                                                                if ($row['trangthai'] == 1) {
+                                                                    echo "Khóa tài khoản";
+                                                                } else {
+                                                                    echo "Mở khóa";
+                                                                }
+                                                                ?>
+                                                                <span class="text-danger font-weight-bold"> <?php echo $row['HoTen']; ?></span> không?</label>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" name="unlockdatakh" class="btn btn-primary">
+                                                        <?php
+                                                        if ($row['trangthai'] == 1) {
+                                                            echo "Khóa tài khoản";
+                                                        } else {
+                                                            echo "Mở khóa";
+                                                        }
+                                                        ?>
+                                                    </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalUnlock<?php echo $row['MaKH']; ?>">
+                                        <?php
+                                        if ($row['trangthai'] == 1) {
+                                            echo "Khóa tài khoản";
+                                        } else {
+                                            echo "Mở khóa tài khoản";
+                                        }
+                                        ?>
                                     </button>
-                                    
-
-
-
-
-
-
-
-
-
 
                                 </td>
 

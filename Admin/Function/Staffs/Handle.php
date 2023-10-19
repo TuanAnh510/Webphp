@@ -28,6 +28,23 @@ if (isset($_POST['deletedata'])) {
 
 ?>
 
+<?php
+
+if (isset($_POST['unlockdata'])) {
+  $id = $_POST['Unlock_MaQTV'];
+  $trangthai = $_POST['Unlock_TrangThai'];
+  
+  if ($trangthai == 1) {
+    $trangthai = 0;
+  } else {
+    $trangthai = 1;
+  }
+  $query = "UPDATE quantrivien set trangthai = $trangthai  WHERE MaQTV='$id'";
+  $query_run = mysqli_query($conn, $query);
+}
+
+
+?>
 
 <?php
 

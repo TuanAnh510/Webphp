@@ -26,7 +26,7 @@
 					</div>
 					<div>
 						<span>mật khẩu<label>*</label></span>
-						<input type="password" name="password" pattern=".{6,}" required>
+						<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required>
 					</div>
 					<a class="forgot" href="#">Quên mật khẩu?</a>
 					<input type="submit" value="đăng nhập" />

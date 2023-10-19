@@ -10,7 +10,7 @@
         $row = mysqli_num_rows($result);
         echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
     } else {
-        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  GiaBan > 1000000  and HienThiSanPham=1";
+        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `sanpham`,danhmucsp where danhmucsp.MaLG= sanpham.MaLG and  GiaBan > 1000000  and HienThiSanPham=1";
         $result = mysqli_query($con, $query);
     }
 

@@ -7,7 +7,6 @@ include("./Function/Staffs/Handle.php");
 <?php
 $query = "SELECT * FROM quantrivien";
 $query_run = mysqli_query($conn, $query);
-
 ?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -30,7 +29,7 @@ $query_run = mysqli_query($conn, $query);
 
                     <div class="form-group ">
                         <label for="Them_MatKhau">Mật khẩu</label>
-                        <input required value="<?php if (isset($Them_MatKhau))  echo $Them_MatKhau ?>" required type="password" name="Them_MatKhau" class="form-control" id="Them_MatKhau" placeholder="Nhập mật khẩu">
+                        <input required value="<?php if (isset($Them_MatKhau))  echo $Them_MatKhau ?>" required type="password" name="Them_MatKhau" class="form-control" id="Them_MatKhau" placeholder="Nhập mật khẩu" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$">
                         <small class="text-danger"><?php if (isset($loi))  echo $loi ?></small>
 
                     </div>
@@ -240,13 +239,59 @@ $query_run = mysqli_query($conn, $query);
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- modal mở khóa -->
+                                    <div class="modal fade" id="ModalUnlock<?php echo $row['MaQTV']; ?>" tabindex="-1" aria-labelledby="Label_Edit" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg ">
+                                            <!-- modal-xl -->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="Label_Edit"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="" method="post">
 
-                                    <!-- END-DELETE  -->
+                                                        <input type="hidden" name="Unlock_MaQTV" id="Unlock_MaQTV" value="<?php echo $row['MaQTV']; ?>">
 
-                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="">
-                                        Khóa tài khoản
+                                                        <input type="hidden" name="Unlock_TrangThai" id="Unlock_TrangThai" value="<?php echo $row["trangthai"] ?>">
+
+                                                        <div class="form-group">
+                                                            <label>Bạn có chắc muốn
+                                                                <?php
+                                                                if ($row['trangthai'] == 1) {
+                                                                    echo "Khóa tài khoản";
+                                                                } else {
+                                                                    echo "Mở khóa";
+                                                                }
+                                                                ?>
+                                                                <span class="text-danger font-weight-bold"> <?php echo $row['HoTen']; ?></span> không?</label>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" name="unlockdata" class="btn btn-primary">
+                                                        <?php
+                                                        if ($row['trangthai'] == 1) {
+                                                            echo "Khóa tài khoản";
+                                                        } else {
+                                                            echo "Mở khóa";
+                                                        }
+                                                        ?>
+                                                    </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#ModalUnlock<?php echo $row['MaQTV']; ?>">
+                                        <?php
+                                        if ($row['trangthai'] == 1) {
+                                            echo "Khóa tài khoản";
+                                        } else {
+                                            echo "Mở khóa tài khoản";
+                                        }
+                                        ?>
                                     </button>
-
                                 </td>
                             </tr>
 
