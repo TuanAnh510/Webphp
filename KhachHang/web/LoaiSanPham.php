@@ -85,7 +85,7 @@
         $t = $_GET['Ten'];
         $per_page_record = 6;
 
-        $query = "SELECT * FROM `giay` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) ";
+        $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) ";
 
         $result = mysqli_query($con, $query);
         $number_of_result = mysqli_num_rows($result);
@@ -98,16 +98,16 @@
         }
         $start_from = ($page - 1) * $per_page_record;
 
-        $query = "SELECT * FROM `giay` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) LIMIT $start_from,$per_page_record ";
+        $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) LIMIT $start_from,$per_page_record ";
         $result = mysqli_query($con, $query);
-        $dem  = mysqli_query($con, "SELECT * FROM `giay` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) ");
+        $dem  = mysqli_query($con, "SELECT * FROM `sanpham` where HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' ) ");
         $row = mysqli_num_rows($dem);
         echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
     } else if (isset($_GET['timgia'])) {
         $t = $_GET['timgia'];
         if ($t == '2') {
             $per_page_record = 6;
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000 ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000 ";
             $result = mysqli_query($con, $query);
             $number_of_result = mysqli_num_rows($result);
             $number_of_page = ceil($number_of_result / $per_page_record);
@@ -119,15 +119,15 @@
             }
             $start_from = ($page - 1) * $per_page_record;
 
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000 LIMIT $start_from,$per_page_record ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000 LIMIT $start_from,$per_page_record ";
             $result = mysqli_query($con, $query);
-            $dem  = mysqli_query($con, "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000  ");
+            $dem  = mysqli_query($con, "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >0 and GiaBan < 1000000  ");
             $row = mysqli_num_rows($dem);
             echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
         }
         if ($t == '3') {
             $per_page_record = 6;
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000 ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000 ";
             $result = mysqli_query($con, $query);
             $number_of_result = mysqli_num_rows($result);
             $number_of_page = ceil($number_of_result / $per_page_record);
@@ -139,15 +139,15 @@
             }
             $start_from = ($page - 1) * $per_page_record;
 
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000  LIMIT $start_from,$per_page_record ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000  LIMIT $start_from,$per_page_record ";
             $result = mysqli_query($con, $query);
-            $dem  = mysqli_query($con, "SELECT * FROM `giay` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000  ");
+            $dem  = mysqli_query($con, "SELECT * FROM `sanpham` where HienThiSanPham=1 and GiaBan >=1000000 and GiaBan < 2000000  ");
             $row = mysqli_num_rows($dem);
             echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
         }
         if ($t == '4') {
             $per_page_record = 6;
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and  GiaBan > 2000000 ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and  GiaBan > 2000000 ";
             $result = mysqli_query($con, $query);
             $number_of_result = mysqli_num_rows($result);
             $number_of_page = ceil($number_of_result / $per_page_record);
@@ -159,15 +159,15 @@
             }
             $start_from = ($page - 1) * $per_page_record;
 
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 and  GiaBan > 2000000 LIMIT $start_from,$per_page_record ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 and  GiaBan > 2000000 LIMIT $start_from,$per_page_record ";
             $result = mysqli_query($con, $query);
-            $dem  = mysqli_query($con, "SELECT * FROM `giay` where HienThiSanPham=1 and  GiaBan > 2000000  ");
+            $dem  = mysqli_query($con, "SELECT * FROM `sanpham` where HienThiSanPham=1 and  GiaBan > 2000000  ");
             $row = mysqli_num_rows($dem);
             echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
         }
         if ($t == '1') {
             $per_page_record = 6;
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 ";
             $result = mysqli_query($con, $query);
             $number_of_result = mysqli_num_rows($result);
             $number_of_page = ceil($number_of_result / $per_page_record);
@@ -179,16 +179,16 @@
             }
             $start_from = ($page - 1) * $per_page_record;
 
-            $query = "SELECT * FROM `giay` where HienThiSanPham=1 LIMIT $start_from,$per_page_record ";
+            $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 LIMIT $start_from,$per_page_record ";
             $result = mysqli_query($con, $query);
-            $dem  = mysqli_query($con, "SELECT * FROM `giay` where HienThiSanPham=1");
+            $dem  = mysqli_query($con, "SELECT * FROM `sanpham` where HienThiSanPham=1");
             $row = mysqli_num_rows($dem);
             echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
         }
     } else {
 
         $per_page_record = 6;
-        $query = "SELECT * FROM `giay` where HienThiSanPham=1";
+        $query = "SELECT * FROM `sanpham` where HienThiSanPham=1";
         $result = mysqli_query($con, $query);
         $number_of_result = mysqli_num_rows($result);
         $number_of_page = ceil($number_of_result / $per_page_record);
@@ -200,7 +200,7 @@
         }
         $start_from = ($page - 1) * $per_page_record;
 
-        $query = "SELECT * FROM `giay` where HienThiSanPham=1 LIMIT $start_from,$per_page_record ";
+        $query = "SELECT * FROM `sanpham` where HienThiSanPham=1 LIMIT $start_from,$per_page_record ";
 
         $result = mysqli_query($con, $query);
     }

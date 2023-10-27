@@ -170,7 +170,7 @@ body {
 }
 /*----start-wrap----*/
 .wrap {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
 }
 .top-header {
@@ -178,12 +178,13 @@ body {
 }
 .top-header-left {
   float: left;
-  width: 10%;
+  width: 30%;
   padding: 0.25em 0 0 0;
 }
 .top-header-center {
   float: left;
-  width: 80%;
+  width: 60%;
+  margin-left: 15%;
   padding: 0.25em;
   padding: 0.4em;
 }
@@ -229,12 +230,22 @@ body {
   left: 6%;
   margin-left: -10px;
 }
+.badge {
+  position: absolute;
+  top: -15px;
+  right: -5px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+}
 /*----//End-cart-tonggle----*/
 .cart span {
-  background: url(../images/image-sprit.png) no-repeat 0px 0px;
+  background: url(../images/shopping-bag.png) no-repeat 0px 0px;
 }
 .info span {
-  background: url(../images/image-sprit.png) no-repeat -22px 0px;
+  background: url(../images/shopping-bag.png) no-repeat -22px 0px;
 }
 .top-header-center-alert-left {
   float: left;
@@ -273,6 +284,10 @@ body {
   font-size: 0.7em;
   text-transform: uppercase;
 }
+
+
+
+
 /*----start-mid-head---*/
 .mid-grids {
   padding: 1.4em 0;
@@ -284,7 +299,12 @@ body {
 }
 .mid-grid-right {
   float: right;
+  
   padding: 2.5em 0 1em 0;
+}
+.mid-grid-right{
+  display: flex;
+  width: 30%;
 }
 .mid-grid-left input[type="text"] {
   border: 1px solid #08080b;
@@ -306,12 +326,33 @@ body {
   -webkit-transition: width 0.5s ease-out;
   transition: width 0.5s ease-out;
 }
-.logo span {
+.mid-grid-right input[type="text"] {
+   border: 1px solid #08080b;
+   border-right: none;
+   border-left: none;
+   border-top: none;
+   font-family: "Open Sans", sans-serif;
+   outline: none;
+   padding: 0.8em 0;
+   color: #a5a5a5;
+   width: 100%;
+   -moz-transition: width 0.5s ease-out;
+   -webkit-transition: width 0.5s ease-out;
+   transition: width 0.5s ease-out;
+   
+ }
+ .mid-grid-right input[type="text"]:focus {
+   width: 100%;
+   -moz-transition: width 0.5s ease-out;
+   -webkit-transition: width 0.5s ease-out;
+   transition: width 0.5s ease-out;
+ }
+/* .logo span {
   width: 131px;
   height: 60px;
   display: inline-block;
-  background: url(../images/image-sprit.png) no-repeat -57px -3px;
-}
+  background: url(../images/logopk.png) ;
+} */
 .logo {
   position: relative;
 }

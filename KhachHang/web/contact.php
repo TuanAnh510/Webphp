@@ -1,8 +1,3 @@
-<style>
-    .mid-grid-left {
-        display: none;
-    }
-</style>
 
 <body>
     <?php

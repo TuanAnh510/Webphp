@@ -22,9 +22,14 @@ include("Layout_KhachHang_Header.php");
 include("connection.php");
 
 $MaKH =  $_SESSION["MaKH"];
-$query = "SELECT *,Sum(chitietdathang.SoLuong) as 'TongSanPham' FROM dondathang 
+$query = "SELECT * FROM dondathang 
 join KhachHang on dondathang.MaKH = KhachHang.MaKH join chitietdathang 
-ON chitietdathang.SoDH = dondathang.SoDH where dondathang.MaKH = $MaKH and dondathang.TinhTrangGiaoHang!='Giao hàng thành công' GROUP BY dondathang.SoDH";
+ON chitietdathang.SoDH = dondathang.SoDH where dondathang.MaKH = $MaKH
+UNION
+SELECT * FROM dondathang 
+join KhachHang on dondathang.MaKH = KhachHang.MaKH join chitietdathang 
+ON chitietdathang.SoDH = dondathang.SoDH where dondathang.TinhTrangGiaoHang!='Giao hàng thành công'
+";
 $query_run = mysqli_query($con, $query);
 
 
@@ -48,10 +53,11 @@ $query_run = mysqli_query($con, $query);
                         <tr>
                             <th>#</th>
 
-                            <th>Số sản phẩm</th>
+                            <th>Số Lượng sản phẩm</th>
                             <th>Ngày đặt</th>
                             <th>Địa chỉ giao</th>
                             <th>Điện thoại</th>
+                            <th>Phương thức thanh toán</th>
                             <th>Tình trạng</th>
                             <th> </th>
                         </tr>
@@ -63,10 +69,11 @@ $query_run = mysqli_query($con, $query);
                                     <td> <?php echo $index;
                                             $index++; ?></td>
 
-                                    <td> <?php echo $row['TongSanPham']; ?> </td>
+                                    <td> <?php echo $row['SoLuong']; ?> </td>
                                     <td> <?php echo $row['NgayDat']; ?> </td>
                                     <td> <?php echo $row['DiaChiGiaoHang']; ?> </td>
                                     <td> <?php echo $row['DienThoaiKH']; ?> </td>
+                                    <td> <?php echo $row['PTTT']; ?> </td>
                                     <td> <?php echo $row['TinhTrangGiaoHang']; ?> </td>
 
 
@@ -86,7 +93,7 @@ $query_run = mysqli_query($con, $query);
 
                                                     <div class="modal-body">
 
-                                                        <?php $query_run_chitiet = mysqli_query($con, "select * from chitietdathang JOIN dondathang ON chitietdathang.SoDH = dondathang.SoDH join giay ON chitietdathang.MaGiay = giay.MaGiay where chitietdathang.SoDH = '$row[SoDH]'"); ?>
+                                                        <?php $query_run_chitiet = mysqli_query($con, "select * from chitietdathang JOIN dondathang ON chitietdathang.SoDH = dondathang.SoDH join sanpham ON chitietdathang.MaGiay = sanpham.MaGiay where chitietdathang.SoDH = '$row[SoDH]'"); ?>
                                                         <table class="table table-bordered table-secondary table-hover display text-center">
                                                             <thead class="thead-dark">
                                                                 <th>#</th>
@@ -106,8 +113,6 @@ $query_run = mysqli_query($con, $query);
                                                                         <tr>
                                                                             <td> <?php echo $index1;
                                                                                     $index1++; ?></td>
-
-                                                                            
                                                                             <td><?php echo $r["TenGiay"] ?></td>
                                                                             <td><?php echo $r["SoLuong"] ?></td>
                                                                             <td><?php echo number_format($r["DonGia"], 0, ',', '.'); ?></td>
@@ -200,9 +205,7 @@ $query_run = mysqli_query($con, $query);
         background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
     }
 
-    .mid-grid-left {
-        display: none;
-    }
+
 
     th {
         font-weight: bold;

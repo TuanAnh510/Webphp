@@ -112,49 +112,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <!---start-header---->
   <div class="header">
     <div class="top-header" style="padding: 5px 0px;position: fixed;z-index:100000000;width:100%;">
-      <div class="wrap">
-        <div class="top-header-left">
-          <ul>
-            <!---cart-tonggle-script---->
-            <script type="text/javascript">
-              $(function() {
-                var $cart = $('#cart');
-                $('#clickme').click(function(e) {
-                  e.stopPropagation();
-                  if ($cart.is(":hidden")) {
-                    $cart.slideDown("slow");
-                  } else {
-                    $cart.slideUp("slow");
-                  }
-                });
-                $(document.body).click(function() {
-                  if ($cart.not(":hidden")) {
-                    $cart.slideUp("slow");
-                  }
-                });
-              });
-            </script>
-            <!---//cart-tonggle-script---->
-            <?php
-            if (isset($_SESSION['MaKH'])) {
+      <div class="" style="width:80%; margin: 0px auto">
 
-            ?>
-              <li><a class="cart" href="cart2.php"><span id="clickme"> </span></a></li>
-              <!---start-cart-bag---->
-              <div id="cart">Your Cart is Empty <span>(0)</span></div>
-            <?php
-            } else {
-            ?>
-
-            <?php
-            }
-            ?>
-
-          </ul>
-        </div>
         <div class="top-header-center">
           <div class="top-header-center-alert-left">
-            <h3>SHOP GIÀY CHÍNH HÃNG</h3>
+            <h3>CỬA HÀNG PHỤ KIỆN ĐIỆN THOẠI PKStore</h3>
           </div>
           <div class="top-header-center-alert-right">
             <div class="vticker">
@@ -200,16 +162,94 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       </div>
     </div>
     <!----start-mid-head---->
-    <div class="mid-header" style="padding-top: 60px;">
-      <div class="wrap">
+    <div class="mid-header" style="padding-top: 40px;">
+      <div class="" style="width:80%; margin: 0px auto">
         <div class="mid-grid-left">
-          <form>
-            <input type="text" name="Ten" value="<?php if (isset($_GET['Ten'])) echo $_GET['Ten'];  ?>" placeholder="Tìm kiếm" />
-          </form>
-        </div>
-        <div class="mid-grid-right">
+          <a class="" href="index.php">
+            <img src="images/logopk.png" style="width: 100px; height: 80px" alt="">
 
-          <a class="logo" href="index.php"><span> </span></a>
+          </a>
+        </div>
+        <div class="mid-grid-right" style="display: flex; gap: 40px;">
+          <div style="margin-left: 50px;">
+            <form>
+              <input type="text" name="Ten" value="<?php if (isset($_GET['Ten'])) echo $_GET['Ten'];  ?>" placeholder="Tìm kiếm" />
+            </form>
+          </div>
+
+          <div class="top-header-left">
+            <ul>
+              <!---cart-tonggle-script---->
+              <script type="text/javascript">
+                $(function() {
+                  var $cart = $('#cart');
+                  $('#clickme').click(function(e) {
+                    e.stopPropagation();
+                    if ($cart.is(":hidden")) {
+                      $cart.slideDown("slow");
+                    } else {
+                      $cart.slideUp("slow");
+                    }
+                  });
+                  $(document.body).click(function() {
+                    if ($cart.not(":hidden")) {
+                      $cart.slideUp("slow");
+                    }
+                  });
+                });
+              </script>
+              <!---//cart-tonggle-script---->
+              <?php
+              if (isset($_SESSION['MaKH'])) {
+                $MaKH = $_SESSION['MaKH'];
+                $countQuery = "SELECT COUNT(id) FROM giohang WHERE MaKH = '$MaKH'";
+                $qr_count = mysqli_query($con, $countQuery);
+                if ($qr_count) {
+                  $countRow = mysqli_fetch_row($qr_count);
+                  if ($countRow[0] > 0) {
+              ?>
+                    <a class="" style="position: relative;" href="cart2.php">
+                      <span id="clickme">
+                        <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px;margin-top: 5px;">
+                      </span>
+                      <p class="badge"><?php echo ($countRow[0]) ?></p>
+                    </a>
+                  <?php
+                  } else {
+                  ?>
+                    <a class="" style="position: relative;" href="cart2.php">
+                      <span id="clickme">
+                        <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px;margin-top: 5px;">
+                      </span>
+                    </a>
+                  <?php
+                  }
+                  ?>
+
+                <?php
+                } else {
+                ?>
+                  <a class="" style="position: relative;" href="cart2.php">
+                    <span id="clickme">
+                      <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px;margin-top: 5px;">
+                    </span>
+                  </a>
+                <?php
+                }
+              } else {
+                ?>
+                <a class="" style="position: relative;" href="cart2.php">
+                  <span id="clickme">
+                    <img src="./images/shopping-bag.png" alt="" style="width: 30px; height: 30px;margin-top: 5px;">
+                  </span>
+                </a>
+              <?php
+              }
+              ?>
+
+
+            </ul>
+          </div>
 
         </div>
         <div class="clear"> </div>
@@ -219,16 +259,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!----start-bottom-header---->
     <div class="header-bottom">
       <div class="wrap" style="margin-bottom:20px ;">
-
         <ul class="megamenu skyblue">
           <li class="grid"><a class="color2" href="index.php">TRANG CHỦ</a>
           <li class="grid"><a class="color2" href="LOAISANPHAM.php">SẢN PHẨM</a>
           <li class="grid"><a class="color2" href="contact.php">LIÊN HỆ</a>
           <li class="grid"><a class="color2" href="VeChungToi.php">VỀ CHÚNG TÔI</a>
         </ul>
-
-
-
       </div>
     </div>
 

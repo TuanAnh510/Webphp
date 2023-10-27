@@ -25,7 +25,7 @@ use PHPMailer\PHPMailer\Exception;
 $MaKH =  $_SESSION["MaKH"];
 $query = "select * from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
 $result = mysqli_query($con, $query);
-$tongtien_query = "select sum(giay.GiaBan * giohang.soluong) as total from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay where giohang.MaKH = '$MaKH'";
+$tongtien_query = "select sum(sanpham.GiaBan * giohang.soluong) as total from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay where giohang.MaKH = '$MaKH'";
 $run_tongtien = mysqli_query($con, $tongtien_query);
 $row_tongtien = mysqli_fetch_assoc($run_tongtien);
 $tinh = $row_tongtien['total'];
@@ -40,7 +40,9 @@ $count = $row1['count'];
 // echo "count".$count;
 if (isset($_POST['dathangne'])) {
   $diachi = $_POST["diachi"];
-  $qr = "insert into dondathang value(null,'$MaKH',null,0,'Chờ xác nhận',now(),'$diachi',null)";
+  $pttt = $_POST["pttt"];
+
+  $qr = "insert into dondathang value(null,'$MaKH',null,0,'Chờ xác nhận',now(),'$diachi','$pttt',null)";
   mysqli_query($con, $qr);
 
   $laymaddh = "select SoDH from dondathang order by SoDH desc limit 1";
@@ -55,10 +57,8 @@ if (isset($_POST['dathangne'])) {
     while ($row = mysqli_fetch_array($run_truyvangiohang)) {
       $soluong = $row["soluong"];
       $dongia = $row["GiaBan"];
-      $mau = $row['Mauuu'];
-      $size = $row['Sizeee'];
       $mag = $row["MaGiay"];
-      $thuchienthem = "insert into chitietdathang value('$donhangid','$mag','$soluong','$dongia','$size','$mau')";
+      $thuchienthem = "insert into chitietdathang value('$donhangid','$mag','$soluong','$dongia')";
       mysqli_query($con, $thuchienthem);
     }
     $thuchienxoa = "delete from giohang where MaKH = $MaKH";
@@ -145,12 +145,7 @@ if (isset($_POST['dathangne'])) {
                   <div class="col-lg-3">
                     <h3>Tên sản phẩm</h3>
                   </div>
-                  <div class="col-lg-1">
-                    <h3>Size giày</h3>
-                  </div>
-                  <div class="col-lg-1">
-                    <h3>Màu giày</h3>
-                  </div>
+
                   <div class="col-lg-2">
                     <h3>Số lượng</h3>
                   </div>
@@ -184,16 +179,7 @@ if (isset($_POST['dathangne'])) {
                           <p><strong><?php echo $row["TenGiay"]  ?></strong></p>
                           <!-- Data -->
                         </div>
-                        <div class="col-lg-1 col-md-6 mb-4 mb-lg-0 fw-bold">
-                          <!-- Data -->
-                          <p><strong><?php echo $row["Sizeee"]  ?></strong></p>
-                          <!-- Data -->
-                        </div>
-                        <div class="col-lg-1 col-md-6 mb-4 mb-lg-0 fw-bold">
-                          <!-- Data -->
-                          <p><strong><?php echo $row["Mauuu"]  ?></strong></p>
-                          <!-- Data -->
-                        </div>
+
 
                         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 fw-bold">
                           <!-- Quantity -->
@@ -236,33 +222,86 @@ if (isset($_POST['dathangne'])) {
                           </a>
                         </div>
                       </div>
-
-
-
-
-
-
-
                   <?php  }
                   } ?>
                 </div>
 
               </div>
-              <div class="card-body ">
-                <ul class="list-group list-group-flush justify-content-end">
-                  <li class="list-group-item d-flex justify-content-start align-items-center border-0 px-0 mb-3" style="color: #20E3B2; font-size: 30px;   font-weight: bold;">
-                    <span style="margin-left:auto"> </span>
-                    <p> <?php echo "Tổng Tiền: ";
-                        echo number_format((float) $tinh, 0, ',', '.') . " VND";
-                        ?></p>
-                  </li>
-                  <p></p>
-                  <form method="post">
-                    <input class="btn btn-lg mt-2 text-dark border border-primary w-300" type="text" name="diachi" placeholder="Nhập địa chỉ giao">
-                    <input class="btn btn-lg btn-primary mt-2 text-light" type="submit" value="Đặt hàng" name="dathangne">
+              <div class="card-body" style="display: flex;">
+                <div style="width: 50%;">
 
-                  </form>
-                </ul>
+                  <?php
+                  if (isset($_SESSION['MaKH'])) {
+                    $TTKH = $_SESSION["MaKH"];
+                    $query = "SELECT kh.HoTen as HoTen, kh.Email as Email, kh.DienThoaiKH as DienThoaiKH FROM khachhang kh INNER JOIN giohang gh ON kh.MaKH = gh.MaKH WHERE kh.MaKH = '$TTKH'";
+                    $resultKH = mysqli_query($con, $query);
+
+                    if ($resultKH && mysqli_num_rows($resultKH) > 0) {
+                      $rowKH = mysqli_fetch_assoc($resultKH);
+
+                      // Kiểm tra xem khóa "HoTen" có tồn tại trong mảng hay không
+                      if (isset($rowKH['HoTen'])) {
+                        $HoTenKH = $rowKH['HoTen'];
+                        $EmailKH = $rowKH['Email'];
+                        $DienThoaiKH = $rowKH['DienThoaiKH'];
+                  ?>
+                        <form method="post">
+
+                          <div>
+                            <input class="btn btn-lg mt-2 text-dark border border-primary" style="width: 80%;" type="text" value="<?php echo ($HoTenKH) ?>" name="hoten" placeholder="" disabled>
+                          </div>
+                          <div>
+                            <input class="btn btn-lg mt-2 text-dark border border-primary" style="width: 80%;" type="text" name="email" placeholder="" value="<?php echo ($EmailKH) ?>" disabled>
+                          </div>
+                          <div>
+                            <input class="btn btn-lg mt-2 text-dark border border-primary" style="width: 80%;" type="text" name="Sdt" placeholder="" value="<?php echo ($DienThoaiKH) ?>" disabled>
+                          </div>
+                          <div>
+                            <input class="btn btn-lg mt-2 text-dark border border-primary" style="width: 80%;" type="text" name="diachi" placeholder="Nhập địa chỉ giao">
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pttt" id="flexRadioDefault1" value="Thanh toán khi nhận hàng">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Thanh toán khi nhận hàng
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="pttt" id="flexRadioDefault2" value="Thanh toán ngân hàng" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                              Thanh toán ngân hàng
+                            </label>
+                          </div>
+
+                          <input class="btn btn-lg mt-2 btn-primary text-light" style="width: 80%" type="submit" value="Đặt hàng" name="dathangne">
+                        </form>
+                  <?php
+                        // Hiển thị dữ liệu
+
+                      } else {
+                        echo "Không có dữ liệu về Họ tên.";
+                      }
+                    } else {
+                      echo "Không có dữ liệu phù hợp.";
+                    }
+                  } else {
+                    echo "Session MaKH is not set.";
+                  }
+                  ?>
+
+                </div>
+                <div class="">
+                  <span style="margin-left:auto"> </span>
+                  <div>
+
+
+                  </div>
+                  <p style="color: #0b5ed7; font-size: 30px;font-weight: bold; margin-top: 20px;">
+                    <?php echo "Tổng Tiền: ";
+                    echo number_format((float) $tinh, 0, ',', '.') . " VND";
+                    ?></p>
+
+                </div>
+
 
 
               </div>
@@ -317,10 +356,6 @@ if (isset($_POST['dathangne'])) {
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
-  }
-
-  .mid-grid-left {
-    display: none;
   }
 </style>
 

@@ -5,7 +5,7 @@
 
     if (isset($_GET['Ten']) && !empty($_GET['Ten'])) {
         $t = $_GET['Ten'];
-        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  GiaBan > 1000000 and HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' )";
+        $query = "SELECT MaGiay,`TenGiay`, `GiaBan`,GiaBanCu, `AnhBia`,TenLoaiGiay FROM `sanpham`,danhmucsp where danhmucsp.MaLG= sanpham.MaLG and  GiaBan > 1000000 and HienThiSanPham=1 and (TenGiay like '%$t%' or GiaBan like '%$t%' )";
         $result = mysqli_query($con, $query);
         $row = mysqli_num_rows($result);
         echo "<p style='text-align:center; font-weight:bold'>" . "Có " . $row . " sản phẩm được tìm thấy" . "</p>";
@@ -28,35 +28,21 @@
                 <ul id="jquery-demo">
                     <li>
                         <a href="#slide1">
-                            <img src="images/slide-1.jpg" alt="" />
+                            <img src="images/baner1.jpg" alt="" />
                         </a>
-                        <div class="slider-detils">
-                            <h3>BÓNG ĐÁ NAM <label>GIÀY</label></h3>
-                            <span>
-                                Mọi trận đấu đều quan trọng như đôi giày đang mang</span>
-                        </div>
+                       
                     </li>
                     <li>
                         <a href="#slide2">
-                            <img src="images/slide-4.jpg" alt="" />
+                            <img src="images/baner2.jpg" alt="" />
                         </a>
-                        <div class="slider-detils">
-                            <h3>BÓNG ĐÁ NAM <label>GIÀY</label></h3>
-                            <span>
-                                Mọi trận đấu đều quan trọng như đôi giày đang mang</span>
-                        </div>
+                        
                     </li>
                     <li>
                         <a href="#slide3">
-                            <img src="images/slide-1.jpg" alt="" />
+                            <img src="images/baner3.jpg" alt="" />
                         </a>
-                        <div class="slider-detils">
-
-                            <h3>BÓNG ĐÁ NAM <label>GIÀY</label></h3>
-                            <span>
-                                Mọi trận đấu đều quan trọng như đôi giày đang mang</span>
-
-                        </div>
+                       
                     </li>
                 </ul>
             </div>
@@ -64,13 +50,7 @@
         <div class="clear"> </div>
         <!----//End-image-slider---->
         <!----start-price-rage--->
-        <div class="wrap">
-            <div class="price-rage">
-                <h3>MẶT HÀNG GIÁ CAO NHẤT:</h3>
-                <div id="slider-range">
-                </div>
-            </div>
-        </div>
+       
         <!----//End-price-rage--->
         <!--- start-content---->
         <div class="content">

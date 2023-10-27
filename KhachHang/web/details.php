@@ -49,30 +49,31 @@
   include("Layout_KhachHang_Header.php");
   $MaGiay = $_GET['MaGiay'];
 
-  $query = "SELECT `MaGiay`,`TenGiay`, `GiaBan`, `AnhBia`,TenLoaiGiay, MoTa, GiaBanCu,Màu,Size FROM `giay`,danhmucsp where danhmucsp.MaLG= giay.MaLG and  MaGiay = '$MaGiay' and HienThiSanPham=1 ";
+  $query = "SELECT MaGiay, TenGiay, GiaBan, AnhBia, TenLoaiGiay, MoTa, GiaBanCu FROM sanpham,danhmucsp WHERE danhmucsp.MaLG = sanpham.MaLG AND MaGiay = '$MaGiay' AND HienThiSanPham = 1";
 
   $result = mysqli_query($con, $query);
 
   if (isset($_POST['submit_cart'])) {
     if (isset($_SESSION["MaKH"])) {
       $MaKH =  $_SESSION["MaKH"];
-      $size =  $_POST["size"];
-      $mau =  $_POST["mau"];
-      $giohang = "insert into GioHang value(null,'$MaKH','$MaGiay',1,1,'$size','$mau')";
-      $giohang_trung = "select * from giohang where MaKH = '$MaKH' and MaGiay = '$MaGiay' and Sizeee = '$size' and Mauuu='$mau'";
+
+      $giohang = "insert into GioHang values(null,'$MaKH','$MaGiay',1,1)";
+      $giohang_trung = "select * from giohang where MaKH = '$MaKH' and MaGiay = '$MaGiay'";
       $giohang_trung_result = mysqli_query($con, $giohang_trung);
       $row = mysqli_fetch_array($giohang_trung_result);
       if (mysqli_num_rows($giohang_trung_result) != 0) {
         $soluongmoi =  $row["soluong"] + 1;
-        $u = "UPDATE giohang SET soluong = '$soluongmoi' WHERE giohang.MaGiay = '$MaGiay'and Sizeee = '$size' and Mauuu='$mau';";
+        $u = "UPDATE giohang SET soluong = '$soluongmoi' WHERE giohang.MaGiay = '$MaGiay';";
         mysqli_query($con, $u);
         echo "<script>
-				alert('Thêm vào giỏ hàng thành công!!!');
+				alert('Đã cập nhật giỏ hàng!!!');
 				</script>";
       } else {
         mysqli_query($con, $giohang);
         echo "<script>
+        location = './LOAISANPHAM.php;
 				alert('Thêm vào giỏ hàng thành công!!!');
+
 				</script>";
       }
     } else {
@@ -131,7 +132,6 @@
             <div class="details-left">
               <div class="details-left-slider">
                 <ul id="etalage">
-
                   <li>
                     <!-- <img class="etalage_thumb_image" src="images/product-slide/image7_thumb.jpg" /> -->
                     <img class="etalage_source_image" <?php echo 'src="../../Images/ImgProducts/' . $row['AnhBia'] . '" ' ?> />
@@ -145,9 +145,10 @@
                   <?php echo "<h1>" . $row['TenGiay'] . "</h1>" ?>
                   <ul class="pro-rate">
                     <li><a class="product-rate" href="#"> <label> </label></a> <span> </span></li>
-
                   </ul>
                   <p class="product-detail-info"><?php echo $row['MoTa']; ?></p>
+                  <p>Danh mục: <?php echo $row['TenLoaiGiay']; ?></p>
+
 
                   <div class="product-more-details">
                     <ul class="price-avl">
@@ -159,31 +160,7 @@
 
                     </ul>
                     <form method="post">
-                      <ul class="product-colors">
-                        <h3>Chọn màu:</h3>
-                        <?php
-                        $arr1 = explode(',', $row['Màu']);
-                        for ($i = 0; $i < count($arr1); $i++) { ?>
-                          <label style="background-color: <?php echo $arr1[$i] ?> ;" for="<?php echo $arr1[$i] ?>">
 
-                          </label>
-                          <li class="mau" style="background-color: <?php echo $arr1[$i] ?> ;"><input type="radio" name="mau" id="<?php echo $arr1[$i] ?>" style="background-color: <?php echo $arr1[$i] ?> ;" value="<?php echo $arr1[$i] ?>"></li>
-
-                        <?php  } ?>
-
-
-                        <div class="clear"> </div>
-                      </ul>
-                      <div class="custom">
-                        <?php
-                        $arr = explode(',', $row['Size']); ?>
-                        <select name="size">
-
-                          <?php for ($i = 0; $i < count($arr); $i++) { ?>
-                            <option value="<?php echo $arr[$i] ?>"><?php echo $arr[$i] ?></option>
-                          <?php } ?>
-                        </select>
-                      </div>
 
 
 

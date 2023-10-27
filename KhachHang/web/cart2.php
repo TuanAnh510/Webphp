@@ -21,14 +21,14 @@ include("Layout_KhachHang_Header.php");
 require('Changquantity.php');
 
 $MaKH =  $_SESSION["MaKH"];
-$query = "select * from giohang join sanpham on giohang.MaGiay = giay.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
+$query = "select * from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
 $result = mysqli_query($con, $query);
-$tongtien_query = "select sum(giay.GiaBan * giohang.soluong) as total from giohang join sanpham on giohang.MaGiay = giay.MaGiay where giohang.MaKH = '$MaKH'";
+$tongtien_query = "select sum(sanpham.GiaBan * giohang.soluong) as total from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay where giohang.MaKH = '$MaKH'";
 $run_tongtien = mysqli_query($con, $tongtien_query);
 $row_tongtien = mysqli_fetch_assoc($run_tongtien);
 $tinh = $row_tongtien['total'];
 
-$query2 = "select count(*) as count from giohang join sanpham on giohang.MaGiay = giay.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
+$query2 = "select count(*) as count from giohang join sanpham on giohang.MaGiay = sanpham.MaGiay join khachhang on giohang.MaKH = khachhang.MaKH where giohang.MaKH = '$MaKH'";
 $result1 = mysqli_query($con, $query2);
 $row1 = mysqli_fetch_assoc($result1);
 $count = $row1['count'];
@@ -56,12 +56,7 @@ $count = $row1['count'];
                   <div class="col-lg-3">
                     <h3>Tên sản phẩm</h3>
                   </div>
-                  <div class="col-lg-1">
-                    <h3>Size giày</h3>
-                  </div>
-                  <div class="col-lg-1">
-                    <h3>Màu giày</h3>
-                  </div>
+                
                   <div class="col-lg-2">
                     <h3>Số lượng</h3>
                   </div>
@@ -95,16 +90,7 @@ $count = $row1['count'];
                           <p><strong><?php echo $row["TenGiay"]  ?></strong></p>
                           <!-- Data -->
                         </div>
-                        <div class="col-lg-1 col-md-6 mb-4 mb-lg-0 fw-bold">
-                          <!-- Data -->
-                          <p><strong><?php echo $row["Sizeee"]  ?></strong></p>
-                          <!-- Data -->
-                        </div>
-                        <div class="col-lg-1 col-md-6 mb-4 mb-lg-0 fw-bold">
-                          <!-- Data -->
-                          <p><strong><?php echo $row["Mauuu"]  ?></strong></p>
-                          <!-- Data -->
-                        </div>
+                       
 
                         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 fw-bold">
                           <!-- Quantity -->
@@ -225,7 +211,5 @@ $count = $row1['count'];
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
   }
 
-  .mid-grid-left {
-    display: none;
-  }
+  
 </style>
