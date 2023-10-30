@@ -33,7 +33,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- <a style="margin-left:200px;font-size:13px" href="LoaiSanPham.php">LOẠI SẢN PHẨM/</a>
     <a style="font-size:14px" href="#"><?php echo $row1['TenLoaiGiay']; ?></a> -->
     <ul class="product-head" style="width:985xpx;margin-left:190px">
-        <li><a href="LoaiSanPham.php">LOẠI SẢN PHẨM</a> <span>::</span></li>
+        <li><a href="LoaiSanPham.php">LOẠI SẢN PHẨM</a> <span>:</span></li>
         <li class="active-page"><a href="#"><?php echo $row1['TenLoaiGiay']; ?></a></li>
         <div class="clear"> </div>
     </ul>
@@ -85,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <div class="clear"> </div>
                                     </ul>
                                     <div class="block">
-                                        <div class="starbox small ghosting"> </div> <span> (46)</span>
+                                        <!-- <div class="starbox small ghosting"> </div> <span> (46)</span> -->
                                     </div>
                                 </div>
 

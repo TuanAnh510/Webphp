@@ -66,15 +66,18 @@
                     <li><select name="timgia" id="timgia">
 
                             <option value="1">Tất cả</option>
-                            <option value="2">0~1.000.000 VNĐ</option>
-                            <option value="3">1.000.000VNĐ~2.000.000VNĐ</option>
-                            <option value="4">>2.000.000VNĐ </option>
+                            <option value="2">0~50.000 VNĐ</option>
+                            <option value="3">50.000VNĐ~200.000VNĐ</option>
+                            <option value="4">200.000VNĐ~300.000VNĐ</option>
+                            <option value="5"> >300.000VNĐ</option>
+
+
                         </select></li>
 
                 </ul>
             </div>
             <div id="loc" style="margin-left: 170px; margin-bottom: 10px;">
-                <button stype="submit">Lọc</button>
+                <button stype="submit" style="background-color: #fed700; color: black">Lọc</button>
             </div>
         </div>
     </form>
@@ -223,13 +226,7 @@
                 </div>
             </div>
             <div class="content-right product-box" style="width:950px">
-                <div class="product-box-head">
-                    <div class="product-box-head-left">
-                        <h3>SẢN PHẨM
-                    </div>
 
-                    <div class="clear"> </div>
-                </div>
                 <div class="product-grids" style="display:flex;flex-wrap: wrap;">
                     <!--- start-rate---->
                     <script src="js/jstarbox.js"></script>
@@ -274,9 +271,9 @@
                                         <li><a class="googlep" href="#"><span> </span></a></li>
                                         <div class="clear"> </div>
                                     </ul>
-                                    <div class="block">
+                                    <!-- <div class="block">
                                         <div class="starbox small ghosting"> </div> <span> (46)</span>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="product-pic" style="display:flex;flex-direction: column;flex:1">

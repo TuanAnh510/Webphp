@@ -56,7 +56,7 @@ $count = $row1['count'];
                   <div class="col-lg-3">
                     <h3>Tên sản phẩm</h3>
                   </div>
-                
+
                   <div class="col-lg-2">
                     <h3>Số lượng</h3>
                   </div>
@@ -90,7 +90,7 @@ $count = $row1['count'];
                           <p><strong><?php echo $row["TenGiay"]  ?></strong></p>
                           <!-- Data -->
                         </div>
-                       
+
 
                         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0 fw-bold">
                           <!-- Quantity -->
@@ -153,7 +153,7 @@ $count = $row1['count'];
                         echo number_format((float) $tinh, 0, ',', '.') . " VND";
                         ?></p>
                   </li>
-                  <a href="./oder.php" class="btn btn-primary btn-lg align-items-end">
+                  <a href="./oder.php" class="btn btn-primary btn-lg align-items-end" style="width: 50%;">
                     Đặt hàng ngay
                   </a>
                 </ul>
@@ -210,6 +210,4 @@ $count = $row1['count'];
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
   }
-
-  
 </style>

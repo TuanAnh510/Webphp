@@ -1,7 +1,4 @@
 <style>
-	.mid-grid-left {
-		display: none;
-	}
 </style>
 <?php include("Layout_KhachHang_Header.php") ?>
 <!----//End-bottom-header---->

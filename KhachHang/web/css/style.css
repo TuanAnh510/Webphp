@@ -379,8 +379,14 @@ body {
   width: 5%;
 }
 .content-right {
-  float: right;
-  width: 95%;
+  
+  width: 90%;
+  margin: 0px auto;
+}
+.title_product{
+  background:#fed700;
+  height: 5%;
+   
 }
 /*---start-check-box----*/
 .uncheked {
@@ -795,6 +801,10 @@ input[type="checkbox"].css-checkbox15:checked + label i.css-label15 {
 .footer-right p a:hover {
   color: #e45d5d;
 }
+
+
+
+ 
 /*** move top **/
 #toTop {
   display: none;
@@ -1752,6 +1762,7 @@ h2.resp-accordion:first-child {
   border-bottom: 4px solid #333;
 }
 /*----*/
+
 .product-reviwes {
   margin-top: 2em;
 }
@@ -2290,6 +2301,7 @@ span.mail a:hover {
   .footer-left ul li:nth-child(5) {
     display: none;
   }
+  
   .register-top-grid div,
   .register-bottom-grid div {
     width: 70%;

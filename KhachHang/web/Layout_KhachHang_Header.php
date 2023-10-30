@@ -137,7 +137,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               $r = mysqli_fetch_array($qr_run);
             ?>
               <li class="dropdown o">
-                <img src="./imgKH/<?php echo $r["AnhKH"] ?>" alt="<?php echo $r["AnhKH"] ?>" srcset="">
+                <img src="./imgKH/<?php echo $r["AnhKH"] ?>" alt="<?php echo $r["AnhKH"] ?>" srcset="" class="custom-image">
                 <button class="nut_dropdown"><?php echo $r["HoTen"] ?></button>
                 <div class="noidung_dropdown">
                   <a style="color:black;" href="profileKH.php">Xem thông tin</a>
@@ -151,14 +151,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <?php
             } else {
             ?>
-              <li><a href="login.php">Đăng nhập</a><span> </span></li>
-              <li><a href="register.php">Đăng ký</a></li>
+              <li><a href="login.php" style="font-size: 13px;">Đăng nhập</a><span> </span></li>
+              <li><a href="register.php" style="font-size: 13px;">Đăng ký</a></li>
             <?php
             }
             ?>
           </ul>
         </div>
-        <div class="clear"> </div>
+        <div class=" clear">
+        </div>
       </div>
     </div>
     <!----start-mid-head---->
@@ -258,12 +259,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!----//End-mid-head---->
     <!----start-bottom-header---->
     <div class="header-bottom">
-      <div class="wrap" style="margin-bottom:20px ;">
+      <div style="margin-bottom:20px ;">
         <ul class="megamenu skyblue">
           <li class="grid"><a class="color2" href="index.php">TRANG CHỦ</a>
           <li class="grid"><a class="color2" href="LOAISANPHAM.php">SẢN PHẨM</a>
-          <li class="grid"><a class="color2" href="contact.php">LIÊN HỆ</a>
           <li class="grid"><a class="color2" href="VeChungToi.php">VỀ CHÚNG TÔI</a>
+          <li class="grid"><a class="color2" href="contact.php">LIÊN HỆ</a>
         </ul>
       </div>
     </div>

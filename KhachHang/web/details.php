@@ -65,15 +65,14 @@
         $soluongmoi =  $row["soluong"] + 1;
         $u = "UPDATE giohang SET soluong = '$soluongmoi' WHERE giohang.MaGiay = '$MaGiay';";
         mysqli_query($con, $u);
-        echo "<script>
-				alert('Đã cập nhật giỏ hàng!!!');
-				</script>";
+        // echo "<script>
+				// alert('Đã cập nhật giỏ hàng!!!');
+				// </script>";
       } else {
         mysqli_query($con, $giohang);
         echo "<script>
-        location = './LOAISANPHAM.php;
+        window.location.reload();
 				alert('Thêm vào giỏ hàng thành công!!!');
-
 				</script>";
       }
     } else {

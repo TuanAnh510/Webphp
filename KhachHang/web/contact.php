@@ -1,4 +1,3 @@
-
 <body>
     <?php
     include("Layout_KhachHang_Header.php");
@@ -35,7 +34,7 @@
 
             //Recipients
             $mail->setFrom($_POST['email'], $_POST['name']);
-            $mail->addAddress('hau.tm.61cntt@ntu.edu.vn', 'TrinhMinhHau');     // Add a recipient              // Name is optional
+            $mail->addAddress('nguyenhoangtuananh.nt16@gmail.com', 'Anh Tuấn');     // Add a recipient              // Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
 
             // $mail->addCC('cc@example.com');
@@ -65,7 +64,7 @@
     <div class="content contact-main">
         <!----start-contact---->
         <div class="contact-info">
-          
+
             <div class="wrap">
                 <div class="contact-grids">
                     <div class="col_1_of_bottom span_1_of_first1">
@@ -126,7 +125,7 @@
                     </div>
                 </form>
             </div>
-              <div class="map">
+            <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15704.576624311765!2d105.94275538715824!3d10.249955400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310a82ce95555555%3A0x451cc8d95d6039f8!2zVHLGsOG7nW5nIMSQSCBTxrAgcGjhuqFtIEvhu7kgdGh14bqtdCBWxKluaCBMb25n!5e0!3m2!1svi!2s!4v1697552421377!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
